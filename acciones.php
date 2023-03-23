@@ -1,15 +1,18 @@
 <?php
-//consultas para las conexiones //
-if(isset($_POST['rejistrar'])){
+
+include 'conecta.php';
+//consultas para las conexiones 
+if(isset($_POST['btn'])){
 	$mensaje ="";
+	//las variables igualadas son de los campos del formulario "name"
 	$nombre = $conecta->real_escape_string($_POST['Nombre']);
 	$apellido = $conecta->real_escape_string($_POST['Apellido']);
 	$direc = $conecta->real_escape_string($_POST['direccion']);
 	$tel = $conecta->real_escape_string($_POST['Telefono']); 
 	$fnac = $conecta->real_escape_string($_POST['fecha_N']);
-	$email = $conecta->real_escape_string($_POST['email']);
+	$email = $conecta->real_escape_string($_POST['email']); 
 	// se declara la consulta 
-	$consulta = "INSERT INTO usuarios (nombre, apellidos, direccion, telefono, fecha_N, email) 
+	$consulta = "INSERT INTO usuarios (nombre, apellidos, direccion, telefono, fecha_N, email)
 	VALUES ('$nombre','$apellido', '$direc','$tel','$fnac','$email',)";
 	$guardarcon = $conecta->query($consulta);
 	if($guardarcon < 0){
